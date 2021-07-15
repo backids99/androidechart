@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="echarts/echarts.min.js"></script>
+</head>
+<body>
+<div id="main" style="width: 100%;height: calc(100vh - 20px); margin: 0 auto;"></div>
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main'), '%theme%');
+    var option = %options%;
+    myChart.setOption(option);
+</script>
+</body>
+</html>
