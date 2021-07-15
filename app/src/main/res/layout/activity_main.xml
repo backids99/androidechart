@@ -15,10 +15,7 @@
         <id.bafika.echart.ECharts
             android:id="@+id/chart"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            app:chartTitle="Bakhtiar"
-            app:chartType="pie"
-            app:chartLoaderOn="true" />
+            android:layout_height="500dp" />
 
     </androidx.cardview.widget.CardView>
 
