@@ -6,6 +6,7 @@ import java.util.Map;
 import id.bafika.echart.options.code.LineType;
 import id.bafika.echart.options.style.LineStyle;
 
+@SuppressWarnings("unchecked")
 public class Mark extends Feature {
     /**
      * 构造函数

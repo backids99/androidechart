@@ -7,6 +7,7 @@ import id.bafika.echart.options.code.LegendType;
 import id.bafika.echart.options.code.Orient;
 import id.bafika.echart.options.style.TextStyle;
 
+@SuppressWarnings("unchecked")
 public class Legend extends Basic<Legend> implements Data<Legend>, Component {
     /**
      * 布局方式，默认为水平布局，可选为：'horizontal' | 'vertical'

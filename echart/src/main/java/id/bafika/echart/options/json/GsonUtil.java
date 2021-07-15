@@ -2,8 +2,6 @@ package id.bafika.echart.options.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 
 import id.bafika.echart.options.Option;
 import id.bafika.echart.options.axis.Axis;
@@ -19,9 +17,7 @@ public class GsonUtil {
      */
     public static String format(Object object) {
         Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-        JsonParser jp = new JsonParser();
-        JsonElement je = jp.parse(gson.toJson(object));
-        String prettyJsonString = gson.toJson(je);
+        String prettyJsonString = gson.toJson(object);
         //简单处理function
         String[] lines = prettyJsonString.split("\n");
         lines = replaceEchartQuote(lines);
@@ -41,9 +37,7 @@ public class GsonUtil {
      */
     public static String prettyFormat(Object object) {
         Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-        JsonParser jp = new JsonParser();
-        JsonElement je = jp.parse(gson.toJson(object));
-        String prettyJsonString = gson.toJson(je);
+        String prettyJsonString = gson.toJson(object);
         //简单处理function
         String[] lines = prettyJsonString.split("\n");
         lines = replaceEchartQuote(lines);
@@ -131,8 +125,7 @@ public class GsonUtil {
         Gson gson = new GsonBuilder().setPrettyPrinting().
                 registerTypeAdapter(Series.class, new SeriesDeserializer()).
                 registerTypeAdapter(Axis.class, new AxisDeserializer()).create();
-        Option option = gson.fromJson(json, Option.class);
-        return option;
+        return gson.fromJson(json, Option.class);
     }
 
     /**

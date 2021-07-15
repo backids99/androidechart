@@ -10,6 +10,7 @@ import id.bafika.echart.options.code.Symbol;
 import id.bafika.echart.options.style.ItemStyle;
 import id.bafika.echart.options.style.TextStyle;
 
+@SuppressWarnings("unchecked")
 public abstract class BasicData<T> implements Serializable {
 
     private static final long serialVersionUID = 3510060011221090087L;

@@ -9,6 +9,7 @@ import id.bafika.echart.options.code.AxisType;
 import id.bafika.echart.options.code.X;
 import id.bafika.echart.options.code.Y;
 
+@SuppressWarnings("unchecked")
 public abstract class Axis<T> extends AbstractData<T> implements Component {
     /**
      * 是否显示
@@ -17,15 +18,12 @@ public abstract class Axis<T> extends AbstractData<T> implements Component {
     /**
      * 坐标轴类型，横轴默认为类目型'category'，纵轴默认为数值型'value'
      *
-     * @see AxisType
      */
     private AxisType type;
     /**
      * 坐标轴类型，横轴默认为类目型'bottom'，纵轴默认为数值型'left'，可选为：'bottom' | 'top' | 'left' |
      * 'right'
      *
-     * @see X
-     * @see Y
      */
     private Object position;
     /**

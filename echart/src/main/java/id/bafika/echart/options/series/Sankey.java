@@ -8,6 +8,7 @@ import id.bafika.echart.options.code.SeriesType;
 import id.bafika.echart.options.series.force.Link;
 import id.bafika.echart.options.series.force.Node;
 
+@SuppressWarnings("unchecked")
 public class Sankey extends Series<Sankey> {
     /**
      * 图中每个矩形节点的宽度

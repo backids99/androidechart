@@ -13,6 +13,7 @@ import id.bafika.echart.options.series.force.Link;
 import id.bafika.echart.options.series.force.Node;
 import id.bafika.echart.options.series.other.Force;
 
+@SuppressWarnings("unchecked")
 public class Graph extends Series<Graph> {
     /**
      * 图的布局

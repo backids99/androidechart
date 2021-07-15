@@ -5,6 +5,7 @@ import java.util.List;
 
 import id.bafika.echart.options.code.Easing;
 
+@SuppressWarnings("unchecked")
 public abstract class AbstractData<T> implements Data<T>, java.io.Serializable {
     private static final long serialVersionUID = 1L;
     /**

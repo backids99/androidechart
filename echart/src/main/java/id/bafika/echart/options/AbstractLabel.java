@@ -5,6 +5,7 @@ import java.io.Serializable;
 import id.bafika.echart.options.code.Position;
 import id.bafika.echart.options.style.TextStyle;
 
+@SuppressWarnings("unchecked")
 public abstract class AbstractLabel<T> implements Serializable {
 
     private static final long serialVersionUID = -6908403517815789999L;

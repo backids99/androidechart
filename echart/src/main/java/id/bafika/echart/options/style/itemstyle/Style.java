@@ -12,6 +12,7 @@ import id.bafika.echart.options.style.LinkStyle;
 import id.bafika.echart.options.style.NodeStyle;
 import id.bafika.echart.options.style.TextStyle;
 
+@SuppressWarnings("unchecked")
 public abstract class Style<T> implements Serializable {
 
     private static final long serialVersionUID = -3920258078225722832L;

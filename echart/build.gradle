@@ -1,7 +1,10 @@
 plugins {
     id 'com.android.library'
-    id 'com.vanniktech.maven.publish'
+    id 'maven-publish'
 }
+
+group 'id.bafika.echart'
+version = '1.0'
 
 android {
     compileSdkVersion 30
@@ -35,7 +38,25 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'com.google.code.gson:gson:2.8.7'
     implementation 'org.jetbrains:annotations:15.0'
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
+
+ext {
+    PUBLISH_GROUP_ID = 'id.bafika.echart'
+    PUBLISH_VERSION = '1.0'
+    PUBLISH_ARTIFACT_ID = 'echart'
+    PUBLISH_DESCRIPTION = 'An easy android chart from echarts.apache.org.'
+    PUBLISH_URL = 'https://github.com/backids99/androidechart'
+    PUBLISH_LICENSE_NAME = 'The Apache Software License, Version 2.0'
+    PUBLISH_LICENSE_URL = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    PUBLISH_DEVELOPER_ID = 'backids99'
+    PUBLISH_DEVELOPER_NAME = 'Bakhtiar Abdullah'
+    PUBLISH_DEVELOPER_EMAIL = 'backids99@gmail.com'
+    PUBLISH_SCM_CONNECTION = 'scm:git:github.com/backids99/androidechart.git'
+    PUBLISH_SCM_DEVELOPER_CONNECTION = 'scm:git:ssh://github.com/backids99/androidechart.git'
+    PUBLISH_SCM_URL = 'https://github.com/backids99/androidechart'
+}
+
+apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"

@@ -5,6 +5,7 @@ import java.io.Serializable;
 import id.bafika.echart.options.code.X;
 import id.bafika.echart.options.code.Y;
 
+@SuppressWarnings("unchecked")
 public abstract class Basic<T> implements Serializable {
     private static final long serialVersionUID = 1L;
 

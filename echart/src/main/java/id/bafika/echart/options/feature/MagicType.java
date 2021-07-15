@@ -6,6 +6,7 @@ import java.util.Map;
 import id.bafika.echart.options.code.Magic;
 import id.bafika.echart.options.series.Funnel;
 
+@SuppressWarnings("unchecked")
 public class MagicType extends Feature {
     private Option option;
 

@@ -10,6 +10,7 @@ import id.bafika.echart.options.code.X;
 import id.bafika.echart.options.code.Y;
 import id.bafika.echart.options.style.ItemStyle;
 
+@SuppressWarnings("unchecked")
 public abstract class Series<T> extends AbstractData<T> implements Chart {
     /**
      * 是否启用图例（legend）hover时的联动响应（高亮显示）

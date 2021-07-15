@@ -1,5 +1,7 @@
 package id.bafika.echart.options;
 
+import org.jetbrains.annotations.NotNull;
+
 public enum Event {
     // -------全局通用
     REFRESH("refresh"),
@@ -40,7 +42,7 @@ public enum Event {
     /**
      * 获取toString值
      */
-    public String toString() {
+    public @NotNull String toString() {
         return this.event;
     }
 }

@@ -9,17 +9,30 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.13.0'
+//        classpath 'io.github.gradle-nexus:publish-plugin:1.1.0'
         classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.4.10.2'
     }
 }
 
+plugins {
+    id "maven-publish"
+    id "io.github.gradle-nexus.publish-plugin" version "1.1.0"
+}
+
 allprojects {
+//    apply plugin: 'io.github.gradle-nexus.publish-plugin'
     repositories {
         google()
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
     }
+//    plugins {
+//        id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
+//    }
+//    plugins.withId("com.vanniktech.maven.publish") {
+//        mavenPublish {
+//            sonatypeHost = "S01"
+//        }
+//    }
 }
 
 task clean(type: Delete) {

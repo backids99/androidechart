@@ -3,6 +3,7 @@ package id.bafika.echart.options.feature;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("unchecked")
 public class DataZoom extends Feature {
 
     /**
