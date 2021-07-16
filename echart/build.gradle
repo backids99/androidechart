@@ -13,10 +13,29 @@ ext {
 group = PUBLISH_GROUP_ID
 version = PUBLISH_VERSION
 
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    if (project.plugins.findPlugin("com.android.library")) {
+        from android.sourceSets.main.java.srcDirs
+    } else {
+        from sourceSets.main.java.srcDirs
+    }
+}
+
+artifacts {
+    archives androidSourcesJar
+}
+
 afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
+                groupId PUBLISH_GROUP_ID
+                artifactId PUBLISH_ARTIFACT_ID
+                version PUBLISH_VERSION
+
+                artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
+                artifact androidSourcesJar
 
                 pom {
                     name = 'Android Echart'
