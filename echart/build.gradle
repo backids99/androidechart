@@ -1,10 +1,91 @@
 plugins {
     id 'com.android.library'
     id 'maven-publish'
+    id 'signing'
 }
 
-group 'id.bafika.echart'
-version = '1.0'
+ext {
+    PUBLISH_GROUP_ID = 'id.bafika'
+    PUBLISH_VERSION = '1.0'
+    PUBLISH_ARTIFACT_ID = 'echart'
+}
+
+group = PUBLISH_GROUP_ID
+version = PUBLISH_VERSION
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+
+                pom {
+                    name = 'Android Echart'
+                    description = 'Android echart is Android library to using echart js (https://echarts.apache.org) for creating line chart, bar chart, pie chart, etc.'
+                    url = 'https://github.com/backids99/androidechart'
+                    licenses {
+                        license {
+                            name = 'The Apache Software License, Version 2.0'
+                            url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'backids99'
+                            name = 'Bakhtiar Abdullah'
+                            email = 'backids99@gmail.com'
+                        }
+                    }
+                    scm {
+                        connection = 'scm:git:github.com/backids99/androidechart.git'
+                        developerConnection = 'scm:git:ssh://github.com/backids99/androidechart.git'
+                        url = 'https://github.com/backids99/androidechart'
+                    }
+                    withXml {
+                        def dependenciesNode = asNode().appendNode('dependencies')
+
+                        project.configurations.implementation.allDependencies.each {
+                            if (it == null) return
+                            if (it.group == null) return
+                            if (it.name == null) return
+                            if (it.name == 'unspecified') return
+                            def dependencyNode = dependenciesNode.appendNode('dependency')
+                            dependencyNode.appendNode('groupId', it.group)
+                            dependencyNode.appendNode('artifactId', it.name)
+                            dependencyNode.appendNode('version', it.version)
+                        }
+                    }
+                }
+            }
+        }
+        repositories {
+            maven {
+                name = "sonatype"
+                url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+
+                credentials {
+                    username System.getenv("OSSRH_USERNAME")
+                    password System.getenv("OSSRH_PASSWORD")
+                }
+            }
+        }
+    }
+}
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+            packageGroup = PUBLISH_GROUP_ID
+            username = System.getenv("OSSRH_USERNAME")
+            password = System.getenv("OSSRH_PASSWORD")
+        }
+    }
+}
+
+signing {
+    sign publishing.publications
+}
 
 android {
     compileSdkVersion 30
@@ -20,12 +101,6 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -33,7 +108,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'com.google.code.gson:gson:2.8.7'
@@ -42,21 +116,3 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
-
-ext {
-    PUBLISH_GROUP_ID = 'id.bafika.echart'
-    PUBLISH_VERSION = '1.0'
-    PUBLISH_ARTIFACT_ID = 'echart'
-    PUBLISH_DESCRIPTION = 'An easy android chart from echarts.apache.org.'
-    PUBLISH_URL = 'https://github.com/backids99/androidechart'
-    PUBLISH_LICENSE_NAME = 'The Apache Software License, Version 2.0'
-    PUBLISH_LICENSE_URL = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    PUBLISH_DEVELOPER_ID = 'backids99'
-    PUBLISH_DEVELOPER_NAME = 'Bakhtiar Abdullah'
-    PUBLISH_DEVELOPER_EMAIL = 'backids99@gmail.com'
-    PUBLISH_SCM_CONNECTION = 'scm:git:github.com/backids99/androidechart.git'
-    PUBLISH_SCM_DEVELOPER_CONNECTION = 'scm:git:ssh://github.com/backids99/androidechart.git'
-    PUBLISH_SCM_URL = 'https://github.com/backids99/androidechart'
-}
-
-apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
