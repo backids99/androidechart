@@ -47,12 +47,13 @@ public class MainActivity extends AppCompatActivity {
 
         GsonOption option = new GsonOption();
         option.title("Pie Chart")
+                .backgroundColor("#00000000")
                 .legend(new Legend().top(Align.bottom))
                 .series(pie)
                 .tooltip(new Tooltip().trigger(Trigger.item).formatter("<b>{b}</b> <br/>{c} (<i>{d}%</i>)"));
 
         ECharts eCharts = findViewById(R.id.chart);
-        eCharts.setTheme(Theme.LIGHT);
+        eCharts.setTheme(Theme.DARK);
         eCharts.setOptions(option);
         eCharts.build();
 
