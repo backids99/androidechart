@@ -70,6 +70,17 @@ public class Tooltip extends Basic<Tooltip> implements Component {
      */
     private Boolean alwaysShowContent;
 
+    private Boolean confine;
+
+    public Boolean confine() {
+        return this.confine;
+    }
+
+    public Tooltip confine(Boolean confine) {
+        this.confine = confine;
+        return this;
+    }
+
     public Boolean alwaysShowContent() {
         return this.alwaysShowContent;
     }
