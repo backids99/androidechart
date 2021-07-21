@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         Pie pie = new Pie("1");
         pie.name("Data 1")
             .radius("5%", "50%")
-            .center("50%", "50%")
+            .center("50%", "60%")
             .roseType(RoseType.area)
             .itemStyle(new ItemStyle().borderRadius(8));
 
@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
                 .legend(new Legend().top(Align.bottom))
                 .series(pie)
                 .tooltip(new Tooltip().trigger(Trigger.item).formatter("<b>{b}</b> <br/>{c} (<i>{d}%</i>)"));
+
+        System.out.println(option.toString());
 
         ECharts eCharts = findViewById(R.id.chart);
         eCharts.setTheme(Theme.DARK);

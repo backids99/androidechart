@@ -37,6 +37,10 @@ public class ItemStyle implements Serializable {
 
     private Integer borderRadius;
 
+    private Object shadowColor;
+
+    private Integer shadowBlur;
+
     /**
      * 获取normal值
      */
@@ -183,6 +187,40 @@ public class ItemStyle implements Serializable {
     }
 
     /**
+     * 设置shadowColor值
+     *
+     * @param shadowColor
+     */
+    public ItemStyle shadowColor(Object shadowColor) {
+        this.shadowColor = shadowColor;
+        return this;
+    }
+
+    /**
+     * 获取shadowColor值
+     */
+    public Object shadowColor() {
+        return this.shadowColor;
+    }
+
+    /**
+     * 设置shadowBlur值
+     *
+     * @param shadowBlur
+     */
+    public ItemStyle shadowBlur(Integer shadowBlur) {
+        this.shadowBlur = shadowBlur;
+        return this;
+    }
+
+    /**
+     * 获取shadowBlur值
+     */
+    public Integer shadowBlur() {
+        return this.shadowBlur;
+    }
+
+    /**
      * 获取breadcrumb值
      */
     public Breadcrumb getBreadcrumb() {
@@ -244,6 +282,38 @@ public class ItemStyle implements Serializable {
      */
     public void setBorderRadius(Integer borderRadius) {
         this.borderRadius = borderRadius;
+    }
+
+    /**
+     * 获取shadowColor值
+     */
+    public Object getShadowColor() {
+        return shadowColor;
+    }
+
+    /**
+     * 设置shadowColor值
+     *
+     * @param shadowColor
+     */
+    public void setShadowColor(Object shadowColor) {
+        this.shadowColor = shadowColor;
+    }
+
+    /**
+     * 获取shadowBlur值
+     */
+    public Integer getShadowBlur() {
+        return shadowBlur;
+    }
+
+    /**
+     * 设置shadowBlur值
+     *
+     * @param shadowBlur
+     */
+    public void setShadowBlur(Integer shadowBlur) {
+        this.shadowBlur = shadowBlur;
     }
 
     /**
