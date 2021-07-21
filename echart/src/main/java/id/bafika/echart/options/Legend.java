@@ -3,6 +3,7 @@ package id.bafika.echart.options;
 import java.util.*;
 
 import id.bafika.echart.options.code.Align;
+import id.bafika.echart.options.code.LegendIcon;
 import id.bafika.echart.options.code.LegendType;
 import id.bafika.echart.options.code.Orient;
 import id.bafika.echart.options.style.TextStyle;
@@ -19,6 +20,8 @@ public class Legend extends Basic<Legend> implements Data<Legend>, Component {
      * 设置分页方式
      */
     private LegendType type ;
+
+    private LegendIcon icon;
 
     /**
      * 图例图形宽度
@@ -72,6 +75,15 @@ public class Legend extends Basic<Legend> implements Data<Legend>, Component {
 
     public Legend type(LegendType type) {
         this.type = type;
+        return this;
+    }
+
+    public LegendIcon icon(){
+        return this.icon;
+    }
+
+    public Legend icon(LegendIcon icon) {
+        this.icon = icon;
         return this;
     }
 
