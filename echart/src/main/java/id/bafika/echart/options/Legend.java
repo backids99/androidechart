@@ -54,6 +54,10 @@ public class Legend extends Basic<Legend> implements Data<Legend>, Component {
     private Align align;
     private String formatter;
 
+    private String pageIconColor;
+    private String pageIconInactiveColor;
+    private TextStyle pageTextStyle;
+
     /**
      * 构造函数
      */
@@ -104,6 +108,35 @@ public class Legend extends Basic<Legend> implements Data<Legend>, Component {
         this.formatter = formatter;
         return this;
     }
+
+    public String pageIconColor() {
+        return this.pageIconColor;
+    }
+
+    public Legend pageIconColor(String pageIconColor) {
+        this.pageIconColor = pageIconColor;
+        return this;
+    }
+
+    public String pageIconInactiveColor() {
+        return this.pageIconInactiveColor;
+    }
+
+    public Legend pageIconInactiveColor(String pageIconInactiveColor) {
+        this.pageIconInactiveColor = pageIconInactiveColor;
+        return this;
+    }
+
+    /**
+     * 设置pageTextStyle值
+     *
+     * @param pageTextStyle
+     */
+    public Legend pageTextStyle(TextStyle pageTextStyle) {
+        this.pageTextStyle = pageTextStyle;
+        return this;
+    }
+
     /**
      * 设置textStyle值
      *
@@ -184,6 +217,17 @@ public class Legend extends Basic<Legend> implements Data<Legend>, Component {
             this.textStyle = new TextStyle();
         }
         return this.textStyle;
+    }
+
+    /**
+     * 文字样式
+     *
+     */
+    public TextStyle pageTextStyle() {
+        if (this.pageTextStyle == null) {
+            this.pageTextStyle = new TextStyle();
+        }
+        return this.pageTextStyle;
     }
 
     /**
