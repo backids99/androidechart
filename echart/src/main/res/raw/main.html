@@ -9,8 +9,9 @@
 <div id="main" style="width: 100%;height: calc(100vh - 20px); margin: 0 auto;"></div>
 <script type="text/javascript">
     var myChart = echarts.init(document.getElementById('main'), '%theme%');
-    var option = %options%;
+    var option  = %options%;
     myChart.setOption(option);
+    myChart.on('click', function(params) { BAFIKA.indexClick(params.dataIndex); });
 </script>
 </body>
 </html>

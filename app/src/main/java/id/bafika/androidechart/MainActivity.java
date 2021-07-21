@@ -1,6 +1,7 @@
 package id.bafika.androidechart;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import id.bafika.echart.ECharts;
+import id.bafika.echart.ItemClick;
 import id.bafika.echart.options.Legend;
 import id.bafika.echart.options.Theme;
 import id.bafika.echart.options.Tooltip;
@@ -20,7 +22,7 @@ import id.bafika.echart.options.series.Pie;
 import id.bafika.echart.options.style.Color;
 import id.bafika.echart.options.style.ItemStyle;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ItemClick {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             .itemStyle(new ItemStyle().borderRadius(8));
 
         pie.data(new Data().value(40).name("Rose 1")
-            .itemStyle(new ItemStyle().color("new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0, color: '#000'},{offset: 1, color: '#fff'}] )")));
+            .itemStyle(new ItemStyle().color("new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0, color: '#000'},{offset: 1, color: '#fff'}])")));
         ArrayList<Color.Item> colorItem = new ArrayList<>();
         colorItem.add(new Color.Item().offset(0).color("#000"));
         colorItem.add(new Color.Item().offset(1).color("#fae"));
@@ -55,9 +57,15 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(option.toString());
 
         ECharts eCharts = findViewById(R.id.chart);
+        eCharts.setListener(this);
         eCharts.setTheme(Theme.DARK);
         eCharts.setOptions(option);
         eCharts.build();
 
+    }
+
+    @Override
+    public void index(int index) {
+        Toast.makeText(getBaseContext(), String.valueOf(index), Toast.LENGTH_SHORT).show();
     }
 }

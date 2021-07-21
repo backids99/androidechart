@@ -7,19 +7,25 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
+
+import com.google.gson.Gson;
 
 import id.bafika.echart.options.json.GsonOption;
 
 public class ECharts extends RelativeLayout {
 
     private final Context context;
+
+    private ItemClick itemClick;
 
     private WebView webView;
     private ProgressBar progressBar;
@@ -62,7 +68,7 @@ public class ECharts extends RelativeLayout {
         progressBar = findViewById(R.id.progressBar);
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
+    @SuppressLint({"SetJavaScriptEnabled"})
     public void build() {
         progressBar.setEnabled(progressEnabled);
         progressBar.setProgressDrawable(progressDrawable);
@@ -92,6 +98,13 @@ public class ECharts extends RelativeLayout {
                 progressBar.setVisibility(GONE);
             }
         });
+        webView.addJavascriptInterface(new Object() {
+            @JavascriptInterface
+            public void indexClick(int index)
+            {
+                if (itemClick != null) itemClick.index(index);
+            }
+        }, "BAFIKA");
         webView.reload();
     }
 
@@ -109,5 +122,9 @@ public class ECharts extends RelativeLayout {
 
     public void setProgressDrawable(Drawable progressDrawable) {
         this.progressDrawable = progressDrawable;
+    }
+
+    public void setListener(ItemClick itemClick) {
+        this.itemClick = itemClick;
     }
 }
