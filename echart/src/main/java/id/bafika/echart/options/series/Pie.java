@@ -1,7 +1,7 @@
 package id.bafika.echart.options.series;
 
 import id.bafika.echart.options.code.RoseType;
-import id.bafika.echart.options.code.SelectedMode;
+import id.bafika.echart.options.code.SelectMode;
 import id.bafika.echart.options.code.SeriesType;
 
 public class Pie extends Series<Pie> {
@@ -39,7 +39,7 @@ public class Pie extends Series<Pie> {
      * 选中模式，默认关闭，可选single，multiple
      *
      */
-    private SelectedMode selectedMode;
+    private Object selectMode;
 
     /**
      * 是否启用防止标签重叠策略，默认开启
@@ -189,6 +189,20 @@ public class Pie extends Series<Pie> {
      */
     public Pie roseType(RoseType roseType) {
         this.roseType = roseType;
+        return this;
+    }
+
+    public Object selectMode() {
+        return this.selectMode;
+    }
+
+    public Pie selectMode(boolean selectMode) {
+        this.selectMode = selectMode;
+        return this;
+    }
+
+    public Pie selectMode(SelectMode selectMode) {
+        this.selectMode = selectMode;
         return this;
     }
 

@@ -12,6 +12,37 @@
     var option  = %options%;
     myChart.setOption(option);
     myChart.on('click', function(params) { BAFIKA.indexClick(params.dataIndex); });
+
+    function setHighlight(seriesIndex, dataIndex) {
+        myChart.dispatchAction({
+            type: 'highlight',
+            seriesIndex: seriesIndex,
+            dataIndex: dataIndex
+        });
+
+        myChart.on('mouseover', function(e) {
+
+            myChart.dispatchAction({
+                type: 'downplay',
+                seriesIndex: 0,
+                dataIndex: 0
+            });
+
+            myChart.dispatchAction({
+                type: 'highlight',
+                seriesIndex: 0,
+                dataIndex: e.dataIndex
+            });
+        });
+
+        myChart.on('mouseout', function(e) {
+            myChart.dispatchAction({
+                type: 'highlight',
+                seriesIndex: 0,
+                dataIndex: 0
+            });
+        });
+    };
 </script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 package id.bafika.echart.options.series;
 
 import id.bafika.echart.options.code.Calculation;
-import id.bafika.echart.options.code.SelectedMode;
+import id.bafika.echart.options.code.SelectMode;
 import id.bafika.echart.options.code.SeriesType;
 
 public class Map extends Series<Map> {
@@ -107,7 +107,7 @@ public class Map extends Series<Map> {
      *
      * @param selectedMode
      */
-    public Map selectedMode(SelectedMode selectedMode) {
+    public Map selectedMode(SelectMode selectedMode) {
         this.selectedMode = selectedMode;
         return this;
     }

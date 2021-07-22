@@ -1,6 +1,9 @@
 package id.bafika.androidechart;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +18,7 @@ import id.bafika.echart.options.Theme;
 import id.bafika.echart.options.Tooltip;
 import id.bafika.echart.options.code.Align;
 import id.bafika.echart.options.code.RoseType;
+import id.bafika.echart.options.code.SelectMode;
 import id.bafika.echart.options.code.Trigger;
 import id.bafika.echart.options.data.Data;
 import id.bafika.echart.options.json.GsonOption;
@@ -29,8 +33,12 @@ public class MainActivity extends AppCompatActivity implements ItemClick {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        EditText etIndex = findViewById(R.id.etIndex);
+        Button btnHighlight = findViewById(R.id.btnHighlight);
+
         Pie pie = new Pie("1");
         pie.name("Data 1")
+                .selectMode(false)
             .radius("5%", "50%")
             .center("50%", "60%")
             .roseType(RoseType.area)
@@ -41,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements ItemClick {
         ArrayList<Color.Item> colorItem = new ArrayList<>();
         colorItem.add(new Color.Item().offset(0).color("#000"));
         colorItem.add(new Color.Item().offset(1).color("#fae"));
-        pie.data(new Data().value(30).name("Rose 2").itemStyle(new ItemStyle().color(Color.linearGradient(0, 0, 0, 1, colorItem))));
+        pie.data(new Data().value(30).name("Rose 2"));
         pie.data(new Data().value(21).name("Rose 3"));
         pie.data(new Data().value(12).name("Rose 4"));
         pie.data(new Data().value(11).name("Rose 5"));
@@ -54,13 +62,14 @@ public class MainActivity extends AppCompatActivity implements ItemClick {
                 .series(pie)
                 .tooltip(new Tooltip().trigger(Trigger.item).formatter("<b>{b}</b> <br/>{c} (<i>{d}%</i>)"));
 
-        System.out.println(option.toString());
 
         ECharts eCharts = findViewById(R.id.chart);
         eCharts.setListener(this);
         eCharts.setTheme(Theme.DARK);
         eCharts.setOptions(option);
         eCharts.build();
+
+        btnHighlight.setOnClickListener(v -> eCharts.setHighlight(0, Integer.parseInt(etIndex.getText().toString())));
 
     }
 

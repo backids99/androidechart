@@ -2,7 +2,7 @@ package id.bafika.echart.options;
 
 import id.bafika.echart.options.code.Align;
 import id.bafika.echart.options.code.Orient;
-import id.bafika.echart.options.code.SelectedMode;
+import id.bafika.echart.options.code.SelectMode;
 import id.bafika.echart.options.code.Symbol;
 import id.bafika.echart.options.code.VisualMapType;
 import id.bafika.echart.options.style.TextStyle;
@@ -81,7 +81,7 @@ public class VisualMap extends Basic<VisualMap> {
      * 对于连续型数据，自动平均切分成几段
      */
     private Integer splitNumber;
-    private SelectedMode selectedMode;
+    private SelectMode selectedMode;
     private TextStyle textStyle;
     private Object[] color;
     private Object[] text;
@@ -260,11 +260,11 @@ public class VisualMap extends Basic<VisualMap> {
         return this;
     }
 
-    public SelectedMode selectedMode() {
+    public SelectMode selectedMode() {
         return this.selectedMode;
     }
 
-    public VisualMap selectedMode(SelectedMode selectedMode) {
+    public VisualMap selectedMode(SelectMode selectedMode) {
         this.selectedMode = selectedMode;
         return this;
     }

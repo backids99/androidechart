@@ -98,13 +98,7 @@ public class ECharts extends RelativeLayout {
                 progressBar.setVisibility(GONE);
             }
         });
-        webView.addJavascriptInterface(new Object() {
-            @JavascriptInterface
-            public void indexClick(int index)
-            {
-                if (itemClick != null) itemClick.index(index);
-            }
-        }, "BAFIKA");
+        webView.addJavascriptInterface(new JsInterface(itemClick), "BAFIKA");
         webView.reload();
     }
 
@@ -126,5 +120,10 @@ public class ECharts extends RelativeLayout {
 
     public void setListener(ItemClick itemClick) {
         this.itemClick = itemClick;
+    }
+
+    @SuppressLint("DefaultLocale")
+    public void setHighlight(int seriesIndex, int dataIndex) {
+        webView.evaluateJavascript(String.format("setHighlight(%d, %d)", seriesIndex, dataIndex), null);
     }
 }

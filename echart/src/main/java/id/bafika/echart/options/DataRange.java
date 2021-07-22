@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import id.bafika.echart.options.code.Orient;
-import id.bafika.echart.options.code.SelectedMode;
+import id.bafika.echart.options.code.SelectMode;
 import id.bafika.echart.options.data.RangeData;
 import id.bafika.echart.options.style.TextStyle;
 
@@ -105,7 +105,7 @@ public class DataRange extends Basic<DataRange> implements Component {
      *
      * @param selectedMode
      */
-    public DataRange selectedMode(SelectedMode selectedMode) {
+    public DataRange selectedMode(SelectMode selectedMode) {
         this.selectedMode = selectedMode;
         return this;
     }
