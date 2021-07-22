@@ -10,38 +10,26 @@
 <script type="text/javascript">
     var myChart = echarts.init(document.getElementById('main'), '%theme%');
     var option  = %options%;
+    var prevSeries  = 0;
+    var prevData    = 0;
     myChart.setOption(option);
     myChart.on('click', function(params) { BAFIKA.indexClick(params.dataIndex); });
 
     function setHighlight(seriesIndex, dataIndex) {
+        myChart.dispatchAction({
+            type: 'downplay',
+            seriesIndex: prevSeries,
+            dataIndex: prevData
+        });
+
         myChart.dispatchAction({
             type: 'highlight',
             seriesIndex: seriesIndex,
             dataIndex: dataIndex
         });
 
-        myChart.on('mouseover', function(e) {
-
-            myChart.dispatchAction({
-                type: 'downplay',
-                seriesIndex: 0,
-                dataIndex: 0
-            });
-
-            myChart.dispatchAction({
-                type: 'highlight',
-                seriesIndex: 0,
-                dataIndex: e.dataIndex
-            });
-        });
-
-        myChart.on('mouseout', function(e) {
-            myChart.dispatchAction({
-                type: 'highlight',
-                seriesIndex: 0,
-                dataIndex: 0
-            });
-        });
+        prevSeries  = seriesIndex;
+        prevData    = dataIndex
     };
 </script>
 </body>
