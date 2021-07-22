@@ -15,6 +15,7 @@ import id.bafika.echart.options.Legend;
 import id.bafika.echart.options.Theme;
 import id.bafika.echart.options.Tooltip;
 import id.bafika.echart.options.code.Align;
+import id.bafika.echart.options.code.EmphasisFocus;
 import id.bafika.echart.options.code.RoseType;
 import id.bafika.echart.options.code.Trigger;
 import id.bafika.echart.options.data.Data;
@@ -22,6 +23,8 @@ import id.bafika.echart.options.json.GsonOption;
 import id.bafika.echart.options.series.Pie;
 import id.bafika.echart.options.style.Color;
 import id.bafika.echart.options.style.ItemStyle;
+import id.bafika.echart.options.style.itemstyle.Emphasis;
+import id.bafika.echart.options.style.itemstyle.Normal;
 
 public class MainActivity extends AppCompatActivity implements ItemClick {
 
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements ItemClick {
         Pie pie = new Pie("1");
         pie.name("Data 1")
                 .selectMode(false)
+                .label(new ItemStyle().emphasis(new Emphasis().focus(EmphasisFocus.self)))
             .radius("5%", "50%")
             .center("50%", "60%")
             .roseType(RoseType.area)
