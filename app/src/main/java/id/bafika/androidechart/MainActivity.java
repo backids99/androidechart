@@ -1,7 +1,6 @@
 package id.bafika.androidechart;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -9,7 +8,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import id.bafika.echart.ECharts;
 import id.bafika.echart.ItemClick;
@@ -18,7 +16,6 @@ import id.bafika.echart.options.Theme;
 import id.bafika.echart.options.Tooltip;
 import id.bafika.echart.options.code.Align;
 import id.bafika.echart.options.code.RoseType;
-import id.bafika.echart.options.code.SelectMode;
 import id.bafika.echart.options.code.Trigger;
 import id.bafika.echart.options.data.Data;
 import id.bafika.echart.options.json.GsonOption;
