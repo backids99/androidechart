@@ -26,7 +26,19 @@
         });
 
         myChart.dispatchAction({
+            type: 'hideTip',
+            seriesIndex: prevSeries,
+            dataIndex: prevData
+        });
+
+        myChart.dispatchAction({
             type: 'highlight',
+            seriesIndex: seriesIndex,
+            dataIndex: dataIndex
+        });
+
+        myChart.dispatchAction({
+            type: 'showTip',
             seriesIndex: seriesIndex,
             dataIndex: dataIndex
         });
