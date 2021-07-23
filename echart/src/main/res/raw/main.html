@@ -13,7 +13,10 @@
     var prevSeries  = 0;
     var prevData    = 0;
     myChart.setOption(option);
-    myChart.on('click', function(params) { BAFIKA.indexClick(params.dataIndex); });
+    myChart.on('click', function(params) {
+        BAFIKA.indexClick(params.dataIndex);
+        setHighlight(params.seriesIndex, params.dataIndex);
+    });
 
     function setHighlight(seriesIndex, dataIndex) {
         myChart.dispatchAction({
@@ -29,7 +32,7 @@
         });
 
         prevSeries  = seriesIndex;
-        prevData    = dataIndex
+        prevData    = dataIndex;
     };
 </script>
 </body>
