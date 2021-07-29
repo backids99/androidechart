@@ -66,6 +66,8 @@ public class ECharts extends RelativeLayout {
 
     @SuppressLint({"SetJavaScriptEnabled"})
     public void build() {
+        webView.destroy();
+
         progressBar.setEnabled(progressEnabled);
         progressBar.setProgressDrawable(progressDrawable);
 
