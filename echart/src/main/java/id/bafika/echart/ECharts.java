@@ -79,7 +79,7 @@ public class ECharts extends RelativeLayout {
         settings.setDomStorageEnabled(true);
 
         webView.requestFocusFromTouch();
-        webView.setBackgroundColor(Color.argb(0, 0, 0, 0));
+        webView.setBackgroundColor(0);
         webView.loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
         webView.setWebViewClient(new WebViewClient() {
             @Override
