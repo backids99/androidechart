@@ -9,6 +9,8 @@ import id.bafika.echart.options.code.Symbol;
 import id.bafika.echart.options.code.X;
 import id.bafika.echart.options.code.Y;
 import id.bafika.echart.options.style.ItemStyle;
+import id.bafika.echart.options.style.LineStyle;
+import id.bafika.echart.options.style.itemstyle.Emphasis;
 
 @SuppressWarnings("unchecked")
 public abstract class Series<T> extends AbstractData<T> implements Chart {
@@ -52,6 +54,10 @@ public abstract class Series<T> extends AbstractData<T> implements Chart {
      *
      */
     private ItemStyle itemStyle;
+    /**
+     * emphasis
+     */
+    private Emphasis emphasis;
     /**
      * 标注
      *
@@ -276,6 +282,18 @@ public abstract class Series<T> extends AbstractData<T> implements Chart {
             this.label = new ItemStyle();
         }
         return this.label;
+    }
+
+    public T emphasis(Emphasis emphasis) {
+        this.emphasis = emphasis;
+        return (T) this;
+    }
+
+    public Emphasis emphasis() {
+        if (this.emphasis == null) {
+            this.emphasis = new Emphasis();
+        }
+        return this.emphasis;
     }
 
     /**

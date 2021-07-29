@@ -7,6 +7,10 @@ public class AreaStyle implements Serializable {
     private static final long serialVersionUID = -6547716731700677234L;
 
     /**
+     * opacity
+     */
+    private Double opacity;
+    /**
      * 颜色
      */
     private Object color;
@@ -14,6 +18,23 @@ public class AreaStyle implements Serializable {
      * 填充样式，目前仅支持'default'(实填充)
      */
     private Object type;
+
+    /**
+     * opacity
+     */
+    public Object opacity() {
+        return this.opacity;
+    }
+
+    /**
+     * opacity
+     *
+     * @param opacity
+     */
+    public AreaStyle opacity(Double opacity) {
+        this.opacity = opacity;
+        return this;
+    }
 
     /**
      * 获取color值
@@ -55,6 +76,22 @@ public class AreaStyle implements Serializable {
     public AreaStyle typeDefault() {
         this.type = "default";
         return this;
+    }
+
+    /**
+     * opacity
+     */
+    public Double getOpacity() {
+        return opacity;
+    }
+
+    /**
+     * opacity
+     *
+     * @param opacity
+     */
+    public void setOpacity(Double opacity) {
+        this.opacity = opacity;
     }
 
     /**

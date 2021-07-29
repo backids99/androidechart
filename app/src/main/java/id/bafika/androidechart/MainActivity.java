@@ -20,7 +20,9 @@ import id.bafika.echart.options.code.RoseType;
 import id.bafika.echart.options.code.Trigger;
 import id.bafika.echart.options.data.Data;
 import id.bafika.echart.options.json.GsonOption;
+import id.bafika.echart.options.series.Line;
 import id.bafika.echart.options.series.Pie;
+import id.bafika.echart.options.style.AreaStyle;
 import id.bafika.echart.options.style.Color;
 import id.bafika.echart.options.style.ItemStyle;
 import id.bafika.echart.options.style.itemstyle.Emphasis;
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements ItemClick {
         ArrayList<Color.Item> colorItem = new ArrayList<>();
         colorItem.add(new Color.Item().offset(0).color("#000"));
         colorItem.add(new Color.Item().offset(1).color("#fae"));
-        pie.data(new Data().value(30).name("Rose 2"));
+        pie.data(new Data().value(30).name("Rose 2").itemStyle(new ItemStyle().color(Color.linearGradient(0,0,0, 1, colorItem))));
         pie.data(new Data().value(21).name("Rose 3"));
         pie.data(new Data().value(12).name("Rose 4"));
         pie.data(new Data().value(11).name("Rose 5"));

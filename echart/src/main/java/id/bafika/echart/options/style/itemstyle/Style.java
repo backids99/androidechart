@@ -7,6 +7,7 @@ import id.bafika.echart.options.LabelLine;
 import id.bafika.echart.options.code.Position;
 import id.bafika.echart.options.style.AreaStyle;
 import id.bafika.echart.options.style.ChordStyle;
+import id.bafika.echart.options.style.ItemStyle;
 import id.bafika.echart.options.style.LineStyle;
 import id.bafika.echart.options.style.LinkStyle;
 import id.bafika.echart.options.style.NodeStyle;
@@ -38,6 +39,11 @@ public abstract class Style<T> implements Serializable {
      * 阴线颜色
      */
     private String color0;
+    /**
+     * itemStyle
+     *
+     */
+    private ItemStyle itemStyle;
     /**
      * 线条样式
      *
@@ -404,6 +410,27 @@ public abstract class Style<T> implements Serializable {
     }
 
     /**
+     * 设置itemStyle值
+     *
+     * @param itemStyle
+     */
+    public T itemStyle(ItemStyle itemStyle) {
+        this.itemStyle = itemStyle;
+        return (T) this;
+    }
+
+    /**
+     * itemStyle
+     *
+     */
+    public ItemStyle itemStyle() {
+        if (this.itemStyle == null) {
+            this.itemStyle = new ItemStyle();
+        }
+        return this.itemStyle;
+    }
+
+    /**
      * 设置lineStyle值
      *
      * @param lineStyle
@@ -696,6 +723,22 @@ public abstract class Style<T> implements Serializable {
      */
     public void setColor0(String color0) {
         this.color0 = color0;
+    }
+
+    /**
+     * 获取itemStyle值
+     */
+    public ItemStyle getItemStyle() {
+        return itemStyle;
+    }
+
+    /**
+     * itemStyle
+     *
+     * @param itemStyle
+     */
+    public void setItemStyle(ItemStyle itemStyle) {
+        this.itemStyle = itemStyle;
     }
 
     /**
