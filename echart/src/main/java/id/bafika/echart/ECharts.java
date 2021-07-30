@@ -125,4 +125,8 @@ public class ECharts extends RelativeLayout {
     public void setHighlight(int seriesIndex, int dataIndex) {
         webView.evaluateJavascript(String.format("setHighlight(%d, %d)", seriesIndex, dataIndex), null);
     }
+
+    public void refresh() {
+        webView.evaluateJavascript("myChart.resize()", null);
+    }
 }
