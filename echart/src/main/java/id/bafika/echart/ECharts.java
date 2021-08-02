@@ -57,18 +57,25 @@ public class ECharts extends RelativeLayout {
         initView();
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     public void initView() {
         inflate(context, R.layout.echarts, this);
 
         webView     = findViewById(R.id.webView);
         progressBar = findViewById(R.id.progressBar);
+
+        WebSettings settings = webView.getSettings();
+        settings.setJavaScriptEnabled(true);
+        settings.setLoadWithOverviewMode(true);
+        settings.setDomStorageEnabled(true);
+        settings.setAppCacheEnabled(false);
+
+        webView.clearCache(true);
+        webView.requestFocusFromTouch();
+        webView.setBackgroundColor(0);
     }
 
-    @SuppressLint({"SetJavaScriptEnabled"})
     public void build() {
-        webView.clearHistory();
-        webView.clearCache(true);
-
         progressBar.setEnabled(progressEnabled);
         progressBar.setProgressDrawable(progressDrawable);
 
@@ -76,13 +83,6 @@ public class ECharts extends RelativeLayout {
         content         = content.replace("%theme%", theme);
         content         = content.replace("%options%", options.toString());
 
-        WebSettings settings = webView.getSettings();
-        settings.setJavaScriptEnabled(true);
-        settings.setLoadWithOverviewMode(true);
-        settings.setDomStorageEnabled(true);
-
-        webView.requestFocusFromTouch();
-        webView.setBackgroundColor(0);
         webView.loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
         webView.setWebViewClient(new WebViewClient() {
             @Override
@@ -98,7 +98,6 @@ public class ECharts extends RelativeLayout {
             }
         });
         webView.addJavascriptInterface(new JsInterface(itemClick), "BAFIKA");
-        webView.reload();
     }
 
     public void setTheme(String theme) {
@@ -126,7 +125,7 @@ public class ECharts extends RelativeLayout {
         webView.evaluateJavascript(String.format("setHighlight(%d, %d)", seriesIndex, dataIndex), null);
     }
 
-    public void refresh() {
-        webView.evaluateJavascript("myChart.resize()", null);
+    public void reload() {
+        webView.reload();
     }
 }
