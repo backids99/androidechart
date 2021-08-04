@@ -14,6 +14,7 @@ import id.bafika.echart.options.style.itemstyle.Emphasis;
 
 @SuppressWarnings("unchecked")
 public abstract class Series<T> extends AbstractData<T> implements Chart {
+    private Boolean silent;
     /**
      * 是否启用图例（legend）hover时的联动响应（高亮显示）
      */
@@ -368,6 +369,15 @@ public abstract class Series<T> extends AbstractData<T> implements Chart {
     public Series markLine(MarkLine markLine) {
         this.markLine = markLine;
         return this;
+    }
+
+    public Boolean silent() {
+        return this.silent;
+    }
+
+    public T silent(Boolean silent) {
+        this.silent = silent;
+        return (T) this;
     }
 
     /**
