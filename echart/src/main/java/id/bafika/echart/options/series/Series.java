@@ -114,7 +114,7 @@ public abstract class Series<T> extends AbstractData<T> implements Chart {
     /**
      * 标志图形默认只有主轴显示（随主轴标签间隔隐藏策略），如需全部显示可把showAllSymbol设为true
      */
-    private Boolean showAllSymbol;
+    private Boolean showSymbol;
     /**
      * 重新计算
      */
@@ -601,10 +601,10 @@ public abstract class Series<T> extends AbstractData<T> implements Chart {
     }
 
     /**
-     * 获取showAllSymbol值
+     * 获取showSymbol值
      */
-    public Boolean showAllSymbol() {
-        return this.showAllSymbol;
+    public Boolean showSymbol() {
+        return this.showSymbol;
     }
 
     /**
@@ -626,12 +626,12 @@ public abstract class Series<T> extends AbstractData<T> implements Chart {
     }
 
     /**
-     * 设置showAllSymbol值
+     * 设置showSymbol值
      *
-     * @param showAllSymbol
+     * @param showSymbol
      */
-    public T showAllSymbol(Boolean showAllSymbol) {
-        this.showAllSymbol = showAllSymbol;
+    public T showSymbol(Boolean showSymbol) {
+        this.showSymbol = showSymbol;
         return (T) this;
     }
 }
